@@ -123,7 +123,7 @@ class Aula
                  - data_aula: {$this->dtaula}
                  - hora: {$this->hora}
                  - veiculo: {$this->veiculo}
-                 - anexo: {$this->anexo}
+                 - arquivo: {$this->anexo}
                  ";
         return $str;
     }
@@ -134,7 +134,7 @@ class Aula
         // montar o sql/ query
         $sql = "INSERT INTO aula
                     (instrutor, aluno, data_aula, hora, veiculo, arquivo)
-                    VALUES(:instrutor, :aluno, :data_aula, :hora, :veiculo, :anexo)";
+                    VALUES(:instrutor, :aluno, :data_aula, :hora, :veiculo, :arquivo)";
 
         $parametros = array(
             ':instrutor' => $this->getInstrutor(),
@@ -142,7 +142,7 @@ class Aula
             ':data_aula' => $this->getDtaula(),
             ':hora' => $this->getHora(),
             ':veiculo' => $this->getVeiculo(),
-            ':anexo' => $this->getAnexo()
+            ':arquivo' => $this->getAnexo()
         );
 
         return Database::executar($sql, $parametros) == true;
@@ -200,7 +200,7 @@ class Aula
                         data_aula = :data_aula,
                         hora = :hora,
                         veiculo = :veiculo,
-                        anexo = :anexo
+                        arquivo = :anexo
                 WHERE id = :id";
         $parametros = array(
             ':id' => $this->getid(),

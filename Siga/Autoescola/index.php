@@ -13,7 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $destino_anexo = 'uploads/'.$_FILES['anexo']['name'];
     move_uploaded_file($_FILES['anexo']['tmp_name'],PATH_UPLOAD.$destino_anexo);
+
     $aula = new Aula($id,$instrutor,$aluno,$data,$hora,$veiculo,$destino_anexo);
+    
     if ($acao == 'salvar')
         if ($id > 0)
             $resultado = $aula->alterar();
